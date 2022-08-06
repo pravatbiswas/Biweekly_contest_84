@@ -1,1 +1,8 @@
-
+class Solution:
+    def taskSchedulerII(self, tasks: List[int], space: int) -> int:
+        d = defaultdict(lambda: -inf)
+        day = 0
+        for i in tasks:
+            day = max(day+1, d[i]+space+1)
+            d[i] = day
+        return day
