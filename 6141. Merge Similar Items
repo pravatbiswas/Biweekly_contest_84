@@ -1,0 +1,14 @@
+class Solution:
+    def mergeSimilarItems(self, items1: List[List[int]], items2: List[List[int]]) -> List[List[int]]:
+        count = {}
+        for val, wei in items1:
+            count[val] = wei
+        for val, wei in items2:
+            count[val] = count.get(val, 0) + wei
+        res = []
+        for val in count:
+            temp = [val, count[val]]
+            res.append(temp)
+        res.sort(key = lambda x: x[0])
+        return res
+        
